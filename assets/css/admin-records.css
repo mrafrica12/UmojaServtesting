@@ -1,0 +1,8 @@
+.record-editor-backdrop{position:fixed;inset:0;z-index:2500;background:rgba(19,19,17,.35);display:flex;align-items:center;justify-content:center;padding:20px}
+.record-editor{background:var(--card,#fff);color:var(--ink,#131311);width:min(680px,100%);max-height:90dvh;overflow:auto;border-radius:20px;padding:26px;box-shadow:0 24px 80px #0003}
+.record-editor h2{margin:0 0 8px;font-size:24px}.record-editor-source{font-size:13px;color:var(--ink-soft);margin-bottom:22px}
+.record-editor-fields{display:grid;grid-template-columns:1fr 1fr;gap:16px}.record-editor-fields label{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:500}.record-editor-wide{grid-column:1/-1}
+.record-editor input,.record-editor textarea{font:inherit;color:inherit;width:100%;box-sizing:border-box;padding:10px 12px;border:1px solid var(--line,#ddd);border-radius:8px;background:var(--bg,#f7f7f5)}.record-editor textarea{resize:vertical}.record-editor input:focus,.record-editor textarea:focus{outline:2px solid var(--accent,#c44c16);outline-offset:2px}
+.record-editor-error{color:var(--danger,#b91c1c);font-size:13px;white-space:pre-wrap}.record-editor-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:18px}.record-editor button:disabled{opacity:.6;cursor:wait}
+#record-save-status{padding:12px 16px;background:#e9f6ed;color:#166534;border-radius:10px;margin-bottom:16px}
+@media(max-width:560px){.record-editor-backdrop{padding:10px}.record-editor{padding:20px}.record-editor-fields{grid-template-columns:1fr}}

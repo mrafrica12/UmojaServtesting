@@ -1,0 +1,11 @@
+/* EN / SW toggle for pages that use the plain sub-page nav (assets/js/lang.js). Same look as the homepage toggle. */
+.lang-toggle{display:inline-flex;align-items:center;gap:2px;font-size:13.5px;color:#54524E;user-select:none}
+.lang-toggle button{background:0 0;border:none;min-width:44px;min-height:44px;padding:0 6px;cursor:pointer;font-family:inherit;font-size:13.5px;color:#625F59}
+.lang-toggle button:hover{color:#131311}
+.lang-toggle button.active{color:#131311;font-weight:600}
+.lang-toggle .lang-toggle-divider{color:#625F59}
+.nav-inner .lang-toggle{margin-left:auto;margin-right:4px}
+.lang-toggle--float{position:absolute;top:6px;right:8px;z-index:60}
+.nav-inner .lang-toggle{margin:0 4px 0 auto}
+@media (max-width:480px){.nav-inner .nav-back span{display:none}.nav-inner{gap:6px}}
+@media (max-width:360px){.nav-inner{padding:0 12px;gap:4px}.nav-inner .nav-back{display:none}}

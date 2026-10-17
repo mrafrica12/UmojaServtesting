@@ -1,0 +1,402 @@
+/* ==========================================================================
+   UmojaServ — Case Study template
+   --------------------------------------------------------------------------
+   Shared stylesheet for every /work/<client>/ case study page.
+   Uses the same tokens, type scale and spacing as index.html so case studies
+   read as UmojaServ pages, not as the client's own site.
+
+   Adding a new case study: copy /work/_TEMPLATE/index.html, swap the content,
+   link this file. Do not fork this stylesheet per client.
+   ========================================================================== */
+
+:root{
+  --bg:#FAFAF7;
+  --ink:#131311;
+  --ink-soft:#54524E;
+  --ink-faint:#625F59;
+  --line:#E8E5DD;
+  --accent:#C2410C;
+  --accent-warm:#E8DCC4;
+  --paper:#FFFFFF;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{
+  font-family:'Inter Tight','Inter Tight Fallback',-apple-system,BlinkMacSystemFont,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+}
+a{color:inherit;-webkit-tap-highlight-color:transparent}
+img{max-width:100%;height:auto}
+:focus{outline:0}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+/* --- Navigation (matches the other UmojaServ sub-pages) ------------------ */
+nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(250,250,247,.92);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--line);
+  padding-left:env(safe-area-inset-left,0);padding-right:env(safe-area-inset-right,0);
+}
+.nav-inner{max-width:1080px;margin:0 auto;padding:0 20px;height:56px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{font-family:Fraunces,'Fraunces Fallback',Georgia,serif;font-size:18px;font-weight:500;letter-spacing:-.02em;color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:8px;flex-shrink:0}
+.logo-mark{color:var(--accent)}
+.nav-back{font-size:13px;color:var(--ink-faint);text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:color .2s ease}
+.nav-back:hover{color:var(--accent)}
+.nav-cta{font-size:13.5px;font-weight:500;padding:10px 16px;border-radius:100px;background:var(--ink);color:var(--bg);text-decoration:none;white-space:nowrap;transition:background .2s ease,transform .2s ease}
+.nav-cta:hover{background:var(--accent);transform:translateY(-1px)}
+
+.breadcrumb{max-width:860px;margin:0 auto;padding:18px 20px 0;font-size:12.5px;color:var(--ink-faint)}
+.breadcrumb a{color:var(--ink-faint);text-decoration:none}
+.breadcrumb a:hover{color:var(--accent)}
+.breadcrumb span[aria-current]{color:var(--ink-soft)}
+
+main{max-width:860px;margin:0 auto;padding:0 20px}
+
+/* --- Buttons ------------------------------------------------------------- */
+.btn-primary,.btn-secondary,.btn-whatsapp{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  font-size:15px;font-weight:500;padding:15px 28px;border-radius:100px;
+  text-decoration:none;min-height:48px;
+  transition:background .2s ease,transform .2s ease,border-color .2s ease,box-shadow .2s ease;
+}
+.btn-primary{background:var(--ink);color:var(--bg)}
+.btn-primary:hover{background:var(--accent);transform:translateY(-1px)}
+.btn-secondary{color:var(--ink);border:1px solid var(--line);background:var(--paper)}
+.btn-secondary:hover{border-color:var(--ink)}
+.btn-whatsapp{background:#25D366;color:#0A0A0A}
+.btn-whatsapp:hover{transform:translateY(-1px);box-shadow:0 14px 28px -10px rgba(37,211,102,.5)}
+.btn-arrow{transition:transform .2s ease}
+.btn-primary:hover .btn-arrow,.btn-whatsapp:hover .btn-arrow{transform:translateX(3px)}
+
+/* --- Hero ---------------------------------------------------------------- */
+.cs-hero{padding:36px 0 48px}
+.cs-eyebrow{font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+.cs-hero h1{font-family:Fraunces,'Fraunces Fallback',Georgia,serif;font-size:clamp(32px,6.4vw,54px);font-weight:400;letter-spacing:-.025em;line-height:1.06;margin-bottom:20px}
+.cs-hero-lead{font-size:17px;color:var(--ink-soft);line-height:1.62;max-width:640px}
+
+/* --- Metric grid (the numbers — the core reusable component) ------------- */
+.cs-metrics{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:12px;
+  margin:32px 0 28px;
+}
+.cs-metrics-4{grid-template-columns:repeat(2,1fr)}
+.cs-metrics-3{grid-template-columns:repeat(3,1fr);gap:10px}
+.cs-metrics-6{grid-template-columns:repeat(2,1fr)}
+.cs-section p.cs-dateline{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin:-6px 0 18px}
+.cs-metrics-3 .cs-metric{padding:16px 12px}
+.cs-metrics-3 .cs-metric-value{font-size:clamp(24px,6.4vw,34px)}
+.cs-metric{
+  background:var(--paper);border:1px solid var(--line);border-radius:16px;
+  padding:20px 18px;min-width:0;
+}
+.cs-metric-value{
+  font-family:Fraunces,'Fraunces Fallback',Georgia,serif;
+  font-size:clamp(24px,8vw,42px);font-weight:500;letter-spacing:-.03em;line-height:1;
+  color:var(--accent);margin-bottom:8px;
+  overflow-wrap:break-word;
+}
+.cs-metric-label{font-size:12.5px;color:var(--ink-soft);line-height:1.35;letter-spacing:-.005em}
+.cs-metric sup{font-size:.5em;vertical-align:super;color:var(--ink-faint)}
+
+/* Emphasised results band — used once per page, in The Results */
+.cs-metrics-hero .cs-metric{background:var(--ink);border-color:var(--ink);padding:24px 20px}
+.cs-metrics-hero .cs-metric-value{color:var(--accent-warm);font-size:clamp(23px,7.6vw,44px)}
+.cs-metrics-hero .cs-metric-label{color:rgba(250,250,247,.72)}
+.cs-metrics-hero .cs-metric sup{color:rgba(250,250,247,.5)}
+
+/* --- Sections ------------------------------------------------------------ */
+.cs-section{padding:52px 0;border-top:1px solid var(--line)}
+.cs-section-eyebrow{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:14px}
+.cs-section h2{font-family:Fraunces,'Fraunces Fallback',Georgia,serif;font-size:clamp(25px,4.6vw,36px);font-weight:400;letter-spacing:-.022em;line-height:1.12;margin-bottom:16px}
+.cs-section h3{font-family:Fraunces,'Fraunces Fallback',Georgia,serif;font-size:19px;font-weight:500;letter-spacing:-.01em;margin-bottom:6px}
+.cs-section p{font-size:16px;color:var(--ink-soft);line-height:1.65;max-width:640px}
+.cs-section p+p{margin-top:16px}
+/* Scoped to prose only — pill/button links elsewhere in a section keep
+   their own styling instead of picking up the inline-link treatment. */
+.cs-section p a:not([class]){color:var(--accent);text-decoration:underline;text-underline-offset:2px}
+
+/* --- Business fact card -------------------------------------------------- */
+.cs-factcard{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:24px 22px;margin-top:24px}
+.cs-factrow{display:flex;flex-wrap:wrap;gap:4px 14px;padding:12px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.cs-factrow:last-child{border-bottom:none;padding-bottom:0}
+.cs-factrow:first-child{padding-top:0}
+.cs-factrow dt{color:var(--ink-faint);flex:0 0 116px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding-top:2px}
+.cs-factrow dd{color:var(--ink);flex:1 1 200px;min-width:0}
+.cs-factrow dd a{color:var(--accent);text-decoration:none}
+.cs-factrow dd a:hover{text-decoration:underline}
+
+/* --- Baseline callout ---------------------------------------------------- */
+.cs-baseline{
+  background:var(--accent-warm);border-radius:18px;padding:28px 24px;
+  display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:24px;
+}
+.cs-baseline-value{font-family:Fraunces,'Fraunces Fallback',Georgia,serif;font-size:clamp(44px,12vw,64px);font-weight:500;letter-spacing:-.03em;line-height:.9;color:var(--ink)}
+.cs-baseline-label{font-size:14px;font-weight:500;color:var(--ink);line-height:1.3}
+.cs-baseline-label small{display:block;font-size:12px;font-weight:400;color:var(--ink-soft);margin-top:4px}
+
+/* --- Before: the documented starting state ------------------------------
+   A tall phone screenshot next to its explanation. The image keeps its own
+   aspect ratio rather than being forced into the 16:10 evidence box. */
+.cs-before{display:grid;grid-template-columns:1fr;gap:22px;margin-top:24px;align-items:start}
+.cs-before-shot{
+  background:var(--paper);border:1px solid var(--line);border-radius:16px;
+  overflow:hidden;max-width:300px;
+}
+.cs-before-shot img{width:100%;display:block;background:var(--accent-warm)}
+.cs-before-shot figcaption{padding:12px 14px;font-size:12px;color:var(--ink-soft);line-height:1.45;border-top:1px solid var(--line)}
+.cs-before-shot figcaption strong{display:block;color:var(--ink);font-weight:500;margin-bottom:2px}
+.cs-before-points{list-style:none;display:flex;flex-direction:column;gap:14px}
+.cs-before-points li{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:var(--ink-soft);line-height:1.5}
+.cs-before-points b{color:var(--ink);font-weight:500}
+.cs-before-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:8px}
+
+/* Long non-numeric metric values (e.g. "Closed → Open") need a smaller size
+   than the numerals, or they wrap to three lines on a phone. */
+.cs-metric-value--text{font-size:clamp(20px,5.2vw,26px);line-height:1.12;overflow-wrap:normal;word-break:normal;hyphens:none}
+
+/* --- Flow / stack diagram ------------------------------------------------ */
+.cs-flow{list-style:none;display:flex;flex-direction:column;align-items:stretch;margin-top:24px;counter-reset:cs-step}
+.cs-flow-step{
+  background:var(--paper);border:1px solid var(--line);border-radius:14px;
+  padding:14px 18px;display:flex;align-items:center;gap:13px;counter-increment:cs-step;
+}
+.cs-flow-num{
+  font-family:Fraunces,'Fraunces Fallback',Georgia,serif;font-size:13px;font-weight:500;color:var(--accent);
+  flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--accent-warm);
+  display:flex;align-items:center;justify-content:center;
+}
+.cs-flow-num::before{content:counter(cs-step)}
+.cs-flow-label{font-size:15px;font-weight:500;letter-spacing:-.005em;line-height:1.35}
+.cs-flow-arrow{color:var(--ink-faint);font-size:15px;line-height:1;padding:6px 0;text-align:center}
+
+/* --- Work / detail list -------------------------------------------------- */
+.cs-worklist{list-style:none;display:flex;flex-direction:column;gap:22px;margin-top:28px}
+.cs-worklist li{border-top:1px solid var(--line);padding-top:20px}
+.cs-worklist li:first-child{border-top:none;padding-top:0}
+.cs-worklist p{font-size:15px;max-width:600px}
+.cs-keywords{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.cs-keyword{font-size:12.5px;color:var(--ink-soft);background:var(--paper);border:1px solid var(--line);border-radius:100px;padding:6px 13px}
+
+/* --- Dated timeline (e.g. successive review-count readings) --------------
+   Each reading keeps its own date so history is preserved when a newer
+   figure is added. The latest reading gets the accent dot. */
+.cs-timeline{list-style:none;margin:28px 0 8px;padding:0;border-left:2px solid var(--line)}
+.cs-timeline li{position:relative;display:grid;gap:2px;padding:0 0 18px 22px}
+.cs-timeline li:last-child{padding-bottom:0}
+.cs-timeline li::before{content:'';position:absolute;left:-7px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--paper);border:2px solid var(--line)}
+.cs-timeline li.cs-timeline-latest::before{background:var(--accent);border-color:var(--accent)}
+.cs-timeline-date{font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint)}
+.cs-timeline-value{font-family:Fraunces,'Fraunces Fallback',Georgia,serif;font-size:20px;font-weight:500;letter-spacing:-.01em;color:var(--ink)}
+.cs-timeline-note{font-size:13.5px;line-height:1.45;color:var(--ink-soft)}
+
+/* --- Evidence slots (only ever filled with real, dated data) -------------- */
+.cs-evidence{display:grid;grid-template-columns:1fr;gap:16px;margin-top:26px}
+.cs-evidence-card{background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.cs-evidence-card figure{margin:0}
+.cs-evidence-card img{width:100%;display:block;background:var(--accent-warm)}
+.cs-evidence-card figcaption{padding:14px 18px;font-size:13px;color:var(--ink-soft);line-height:1.5;border-top:1px solid var(--line)}
+.cs-evidence-card figcaption strong{display:block;color:var(--ink);font-weight:500;margin-bottom:2px}
+/* Reserved slot for a screenshot that is not published yet. Holds the exact
+   aspect ratio the real image will use, so dropping it in causes no layout
+   shift and no reflow of the numbers above it. */
+.cs-evidence-pending{
+  aspect-ratio:16/10;background:var(--accent-warm);
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  padding:20px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+  font-weight:600;color:var(--accent);
+}
+/* Always full width — it is a note about the section, not one of the cards,
+   so it must not sit in a single grid column with dead space beside it. */
+.cs-evidence-empty{
+  grid-column:1/-1;
+  border:1px dashed var(--line);border-radius:18px;padding:26px 22px;background:var(--paper);
+}
+.cs-evidence-empty h3{font-size:16px;font-family:'Inter Tight','Inter Tight Fallback',sans-serif;font-weight:500;margin-bottom:8px}
+.cs-evidence-empty p{font-size:14px;margin:0}
+.cs-evidence-list{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.cs-evidence-list li{font-size:12.5px;color:var(--ink-faint);border:1px solid var(--line);border-radius:100px;padding:6px 13px}
+
+/* --- Reported performance window ----------------------------------------
+   A dated block of Google Business Profile figures, rendered as live text
+   rather than a cropped image so it stays sharp, readable and selectable. */
+.cs-perf{margin-top:26px;border:1px solid var(--line);border-radius:18px;background:var(--paper);padding:20px 18px}
+.cs-perf-head{margin-bottom:16px}
+.cs-perf-head strong{display:block;font-size:14px;font-weight:500;letter-spacing:-.005em}
+.cs-perf-head span{font-size:13px;color:var(--ink-faint)}
+.cs-perf .cs-metrics{margin:0}
+.cs-perf .cs-metric{background:var(--bg)}
+
+/* --- Before / after comparison (e.g. PageSpeed Insights runs) ------------
+   Two dated captures side by side on wide screens, stacked with a ↓ between
+   them on phones. The score is repeated as live text above each capture so
+   the change reads without zooming into the screenshot. No JS. */
+.cs-compare{display:grid;grid-template-columns:1fr;gap:10px;margin-top:28px;align-items:stretch}
+.cs-compare-card{background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin:0;display:flex;flex-direction:column}
+.cs-compare-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:16px 18px 14px;border-bottom:1px solid var(--line)}
+.cs-compare-tag{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint)}
+.cs-compare-card--after .cs-compare-tag{color:var(--accent)}
+.cs-compare-score{text-align:right;flex-shrink:0;font-family:Fraunces,'Fraunces Fallback',Georgia,serif;font-size:34px;font-weight:500;letter-spacing:-.03em;line-height:1;color:var(--ink)}
+.cs-compare-card--after .cs-compare-score{color:var(--accent)}
+.cs-compare-score small{display:block;font-family:'Inter Tight','Inter Tight Fallback',sans-serif;font-size:11.5px;font-weight:400;letter-spacing:0;color:var(--ink-soft);text-align:right;margin-top:4px}
+.cs-compare-shot{display:block;background:var(--bg);padding:12px}
+.cs-compare-shot img{display:block;width:100%;max-width:510px;margin:0 auto;border-radius:8px;border:1px solid var(--line)}
+.cs-compare-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border-top:1px solid var(--line)}
+.cs-compare-stats div{background:var(--paper);padding:10px 14px;min-width:0}
+.cs-compare-stats dt{font-size:11.5px;color:var(--ink-faint);line-height:1.3}
+.cs-compare-stats dd{font-size:16px;font-weight:500;color:var(--ink);font-variant-numeric:tabular-nums}
+.cs-compare-card figcaption{padding:12px 16px;font-size:12.5px;color:var(--ink-soft);line-height:1.45;border-top:1px solid var(--line);margin-top:auto}
+.cs-compare-card figcaption a{color:var(--accent);text-decoration:underline;text-underline-offset:2px;display:inline-block;padding:6px 0}
+.cs-compare-arrow{align-self:center;justify-self:center;font-size:20px;line-height:1;color:var(--accent);padding:2px 0}
+
+/* The before → after summary table under a comparison */
+.cs-delta{margin-top:22px;border:1px solid var(--line);border-radius:18px;background:var(--paper);overflow:hidden}
+.cs-delta-head{padding:20px 18px 16px;border-bottom:1px solid var(--line)}
+.cs-delta-kicker{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint)}
+.cs-delta-value{font-family:Fraunces,'Fraunces Fallback',Georgia,serif;font-size:clamp(40px,11vw,56px);font-weight:500;letter-spacing:-.03em;line-height:1.05;color:var(--accent);margin:4px 0 2px}
+.cs-delta-label{font-size:14px;font-weight:500;color:var(--ink)}
+.cs-delta-label span{font-weight:400;color:var(--ink-soft)}
+.cs-delta table{width:100%;border-collapse:collapse;font-size:14.5px;font-variant-numeric:tabular-nums}
+.cs-delta th,.cs-delta td{padding:11px 18px;text-align:left;border-bottom:1px solid var(--line)}
+.cs-delta tr:last-child th,.cs-delta tr:last-child td{border-bottom:none}
+.cs-delta thead th{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);background:var(--bg)}
+.cs-delta tbody th{font-weight:500;color:var(--ink)}
+.cs-delta td{color:var(--ink-soft);white-space:nowrap}
+.cs-delta td:last-child{color:var(--ink);font-weight:500}
+
+/* The four-step framework line that closes a "current result" block */
+.cs-section .cs-framework{font-family:Fraunces,'Fraunces Fallback',Georgia,serif;font-style:italic;font-size:clamp(19px,3.4vw,24px);line-height:1.3;color:var(--ink);max-width:none;margin-top:4px}
+
+.cs-visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* --- Ranking table (future dated ranking checks) ------------------------- */
+.cs-rank-wrap{margin-top:24px;border:1px solid var(--line);border-radius:18px;background:var(--paper);overflow:hidden}
+.cs-rank-head{padding:16px 20px;border-bottom:1px solid var(--line)}
+.cs-rank-head strong{font-size:14px;font-weight:500;display:block}
+.cs-rank-head span{font-size:13px;color:var(--ink-faint)}
+.cs-rank-terms{list-style:none;padding:8px 8px 12px}
+.cs-rank-terms li{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+  padding:12px;font-size:14.5px;border-radius:10px;
+}
+.cs-rank-terms li:nth-child(odd){background:var(--bg)}
+.cs-rank-term{color:var(--ink);min-width:0;overflow-wrap:break-word}
+.cs-rank-status{font-size:12px;color:var(--ink-faint);white-space:nowrap;flex-shrink:0}
+
+/* --- Statement block ----------------------------------------------------- */
+.cs-statement{background:var(--ink);color:var(--bg);border-radius:20px;padding:32px 24px;margin-top:8px}
+.cs-statement h2{color:var(--bg);margin-bottom:20px}
+.cs-statement ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+.cs-statement li{font-size:16px;color:rgba(250,250,247,.78);line-height:1.5;display:flex;gap:12px;align-items:flex-start}
+.cs-statement li b{color:var(--bg);font-weight:500}
+.cs-statement-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:9px}
+/* Specificity note: `.cs-section p` also matches this paragraph, so the
+   selector below must stay at least as specific or the copy inherits
+   --ink-soft and goes unreadable on the dark block. */
+.cs-section .cs-statement-close{
+  font-family:Fraunces,'Fraunces Fallback',Georgia,serif;font-style:italic;font-size:clamp(19px,3.4vw,24px);
+  line-height:1.3;color:var(--accent-warm);margin-top:28px;padding-top:24px;
+  border-top:1px solid rgba(250,250,247,.14);max-width:none;
+}
+
+/* --- Client site showcase ------------------------------------------------ */
+.cs-showcase{display:grid;grid-template-columns:1fr;gap:14px;margin-top:24px}
+.cs-showcase-item{background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.cs-showcase-item img{width:100%;display:block;background:var(--accent-warm)}
+.cs-showcase-caption{padding:13px 16px;font-size:13px;color:var(--ink-soft);border-top:1px solid var(--line)}
+
+/* --- Stacked full-width screenshots ---------------------------------------
+   Reuses .cs-compare-card; for wide UI screenshots that need the full column
+   to stay readable (before/after pages, portal workspaces). */
+.cs-stack{display:grid;grid-template-columns:1fr;gap:14px;margin-top:28px}
+.cs-stack .cs-compare-shot img{max-width:none}
+
+/* --- Role blocks, workflow grid and lanes --------------------------------
+   .cs-role: heading + copy above a stacked screenshot.
+   .cs-flow--grid: the numbered flow wraps into a grid on wide screens
+   (arrows are only needed in the stacked, mobile layout).
+   .cs-lanes: two short flows side by side on wide screens. */
+.cs-hero-cats{font-size:13.5px;font-weight:500;color:var(--ink-faint);margin:16px 0 28px}
+.cs-role{margin-top:40px}
+.cs-role h3{margin-bottom:8px}
+.cs-role .cs-stack{margin-top:18px}
+.cs-lanes{display:grid;grid-template-columns:1fr;gap:28px;margin-top:28px}
+.cs-lane-title{font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.cs-lanes .cs-flow{margin-top:12px}
+
+/* --- Footnotes / disclaimers --------------------------------------------- */
+.cs-footnote{
+  font-size:12.5px;color:var(--ink-faint);line-height:1.55;max-width:640px;
+  margin-top:20px;padding-top:16px;border-top:1px solid var(--line);
+}
+.cs-footnote p+p{margin-top:8px}
+
+/* --- Related services ---------------------------------------------------- */
+.cs-related{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.cs-related a{
+  font-size:14px;font-weight:500;color:var(--ink);text-decoration:none;
+  background:var(--paper);border:1px solid var(--line);border-radius:100px;
+  padding:11px 18px;min-height:44px;display:inline-flex;align-items:center;
+  transition:border-color .2s ease,color .2s ease;
+}
+.cs-related a:hover{border-color:var(--accent);color:var(--accent)}
+
+/* --- Final CTA ----------------------------------------------------------- */
+.cs-final{padding:60px 0 72px;border-top:1px solid var(--line);text-align:center}
+.cs-final h2{font-family:Fraunces,'Fraunces Fallback',Georgia,serif;font-size:clamp(27px,5vw,40px);font-weight:400;letter-spacing:-.025em;line-height:1.1;margin-bottom:16px}
+.cs-final p{font-size:16px;color:var(--ink-soft);max-width:540px;margin:0 auto 28px}
+.cs-final-actions{display:flex;flex-direction:column;gap:12px;max-width:340px;margin:0 auto}
+
+footer{border-top:1px solid var(--line);padding:32px 20px max(32px,env(safe-area-inset-bottom,32px));text-align:center;font-size:13px;color:var(--ink-faint);background:var(--bg)}
+footer a{color:var(--ink-faint);text-decoration:none}
+footer a:hover{color:var(--accent)}
+
+/* --- Reveal (mirrors index.html; degrades to visible without JS) --------- */
+.cs-reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.cs-reveal.in-view{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .cs-reveal{opacity:1;transform:none;transition:none}
+  .btn-primary,.btn-secondary,.btn-whatsapp,.nav-cta{transition:none}
+}
+
+/* --- Wider viewports ----------------------------------------------------- */
+@media (min-width:720px){
+  .cs-hero{padding:44px 0 56px}
+  .cs-section{padding:64px 0}
+  .cs-metrics-4{grid-template-columns:repeat(4,1fr)}
+  .cs-metrics-6{grid-template-columns:repeat(3,1fr)}
+  .cs-metric-value{font-size:36px}
+  .cs-metrics-hero .cs-metric-value{font-size:40px}
+  .cs-evidence{grid-template-columns:repeat(2,1fr)}
+  .cs-showcase{grid-template-columns:repeat(2,1fr)}
+  .cs-flow{align-items:center}
+  .cs-flow-step{width:100%;max-width:420px}
+  .cs-statement{padding:40px 36px}
+  .cs-final-actions{flex-direction:row;justify-content:center;max-width:none}
+  .cs-before{grid-template-columns:300px 1fr;gap:32px}
+  .cs-metric-value--text{font-size:24px}
+  .cs-compare{grid-template-columns:1fr auto 1fr;gap:14px}
+  .cs-compare-arrow{transform:rotate(-90deg)}
+  .cs-delta-head{padding:24px 24px 18px}
+  .cs-delta th,.cs-delta td{padding:12px 24px}
+}
+
+@media (min-width:720px){
+  .cs-flow--grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;align-items:stretch}
+  .cs-flow--grid .cs-flow-arrow{display:none}
+  .cs-flow--grid .cs-flow-step{max-width:none}
+  .cs-lanes{grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+  .cs-lanes .cs-flow{align-items:stretch}
+  .cs-lanes .cs-flow-step{max-width:none}
+}
+
+/* Readability floor for notes, captions and footers: 13px on mobile, 14px from 768px up. Colours unchanged (all already above 4.5:1). */
+.cs-footnote,.cs-before-shot figcaption,.cs-evidence-card figcaption,.cs-compare-card figcaption,figcaption,.cs-baseline-label small,.cs-evidence-list li,.cs-showcase-caption,.cs-perf-head span,footer{font-size:13px}
+@media(min-width:768px){.cs-footnote,.cs-before-shot figcaption,.cs-evidence-card figcaption,.cs-compare-card figcaption,figcaption,.cs-baseline-label small,.cs-evidence-list li,.cs-showcase-caption,.cs-perf-head span,footer{font-size:14px}}
